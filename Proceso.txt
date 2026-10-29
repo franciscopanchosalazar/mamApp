@@ -1,0 +1,10 @@
+1- Crear la carpeta principal, el archivo main.py y este archivo que estoy escribiendo.
+2- Abrir terminal e inicializar git: git init
+3- crear un archivo git ignore desde el terminal:
+echo venv/ > .gitignore
+echo __pycache__/ >> .gitignore
+echo *.pyc >> .gitignore
+echo .env >> .gitignore
+
+4- Crear repositorio en github.
+5- Push el proyecto a github desde el terminal.
