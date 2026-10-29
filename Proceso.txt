@@ -8,3 +8,6 @@ echo .env >> .gitignore
 
 4- Crear repositorio en github.
 5- Push el proyecto a github desde el terminal.
+6- Crear virtual environment: python -m venv venv
+7- Activar venv: venv\Scripts\activate
+8- Crear las carpetas y archivos necesarios (similares al proyecto anteerior)
