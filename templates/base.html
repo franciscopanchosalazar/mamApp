@@ -1,0 +1,27 @@
+<!DOCTYPE html>   
+
+<!-- base.html se utiliza para elementos comunes en todas las paginas -->
+
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+    
+<body>
+    <header>
+        <!-- <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/mamApp.jpg') }}"> -->
+    </header>
+
+    <!-- Muestra el nombre del usuario -->
+    {% if session.get('username') %}
+        {{ session.get('username') }}
+    {% endif %}
+
+    <!-- Todo el contenido desde los archivos html se ubican acá al momento de ser llamados -->
+    {% block content %}{% endblock %} 
+
+    <!--Referencia al script desde otro archivo-->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

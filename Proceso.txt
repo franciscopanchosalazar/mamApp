@@ -11,3 +11,13 @@ echo .env >> .gitignore
 6- Crear virtual environment: python -m venv venv
 7- Activar venv: venv\Scripts\activate
 8- Crear las carpetas y archivos necesarios (similares al proyecto anteerior)
+9- Crear database y tablas en sql desde el terminal o desde workbench (a gusto del programador), Si se hace desde el terminal del proyecto,
+ingresar: mysql -u root -p
+
+10- Crear database: CREATE DATABASE db_mame;
+11- Seleccionar database: USE db_name;
+12- Crear tablas (ver documento schema para esto).
+13- Instalar flask desde el terminal: pip install flask
+14- Trabajar en el archivo python.
+15- Trabajar en las paginas html base, registro y login.
+16- Estilizar un poco en css.

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+<!-- title passed to the base file so it can be shown in the browsers tab-->
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+
+<div class="contenedorRegistro">
+    <div id="bloqueSuperior">
+        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MAM App" class="logo">
+        <h1>MAM App</h1>
+    </div>
+    <form id="formaRegistro" method="post">
+        <label class="campo">Nombre</label>
+        <input type="text" name="usuario" required><br>
+        <label class="campo">Edad</label>
+        <input type="number" name="edad" required>
+        <label class="campo">Signo</label><br>
+        <select name="signo" required>
+            <option value="Aries">Aries</option>
+            <option value="Tauro">Tauro</option>
+            <option value="Geminis">Geminis</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Leo">Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Escorpio">Escorpio</option>
+            <option value="Sagitario">Sagitario</option>
+            <option value="Capricornio">Capricornio</option>
+            <option value="Acuario">Acuario</option>
+            <option value="Piscis">Piscis</option>
+        </select><br>
+        <label class="campo">Email</label><br>
+        <input type="email" name="email" required><br>
+        <label class="campo">Contraseña</label><br>
+        <input type="password" name="contraseña"><br>
+        <label class="campo">Comuna</label><br>
+        <input type="text" name="comuna" required><br>
+        <label class="campo">Breve Descripcion de ti </label><br>
+        <input type="text" name="descripcion" required><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+</div>
+{% endblock %}

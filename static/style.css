@@ -1,0 +1,61 @@
+body{
+    background-color: #f3cce0;
+}
+
+.contenedorRegistro{
+    text-align:center;
+}
+
+.logo{
+    width:150px;
+    height:auto;
+    border-radius:32px;
+}
+
+/* Utilicé campo para las letras de las formas */
+.campo{
+    color: #e4e1e4;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Elementos de la pagina de registro */
+
+#bloqueSuperior{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#formaRegistro {
+  background-color: #4e3a4a;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 600px;
+}
+#formaRegistro input, #formaRegistro button {
+  display: block;
+  width: 95%;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#formaRegistro button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#formaRegistro button:hover {
+  background-color: #9ff196;
+  color: #333;
+}
