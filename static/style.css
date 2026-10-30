@@ -1,61 +1,91 @@
-body{
+/* General */
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../fonts/JosefinSans-Light.ttf') format('truetype');
+}
+
+body {
     background-color: #f3cce0;
+    font-family: Calibri, sans-serif;
 }
 
-.contenedorRegistro{
-    text-align:center;
+input, textarea, select {
+  border-radius: 5px;
+  padding: 10px;
 }
 
+/* Este es el bloque morado al centro de la pantalla
+   Por ende cualquier info debe llevar esta clase */
+.contenedorCentral {
+    background-color: #4e3a4a;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+/* Utilizado para lograr estructurar cosas en dos columnas */
+.gridFormas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Utilizado para estilizar las letras de cada campo */
+.campo, .campoCompleto {
+    display: flex;
+    flex-direction: column;
+    color: #e4e1e4;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Utilizado para que un elemento ocupe todo el espacio horizontal */
+.campoCompleto {
+    grid-column: 1 / 3;
+}
+
+/* Utilizado para alinear encabezados con el contenedor central */
+.containerPrincipal {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Estilizacion del logo principal */
 .logo{
     width:150px;
     height:auto;
     border-radius:32px;
 }
 
-/* Utilicé campo para las letras de las formas */
-.campo{
-    color: #e4e1e4;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: left;
-}
-
-/* Elementos de la pagina de registro */
-
-#bloqueSuperior{
+.encabezados {
+    font-family: 'JosefinSans', serif !important;
+    margin: 20px auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
-#formaRegistro {
-  background-color: #4e3a4a;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  max-width: 600px;
-}
-#formaRegistro input, #formaRegistro button {
+/* Comportamiento y estetica de todos los botones */
+.botones {
   display: block;
   width: 95%;
   margin: 10px auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
-#formaRegistro button {
-  background-color: #0066cc;
-  color: white;
+.botones {
+  background-color: #f3cce0;
+  color: #4e3a4a;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-#formaRegistro button:hover {
-  background-color: #9ff196;
+.botones:hover {
+  background-color: #e4e1e4;
   color: #333;
+  font-weight: bold;
 }

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+<!-- title passed to the base file so it can be shown in the browsers tab-->
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+
+<div class="containerPrincipal">
+    <div class="encabezados">
+        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <h1 id="titulo">MAM APP test</h1>
+    </div>
+
+    <form class="contenedorCentral" method="post">
+        <div class="gridFormas">
+
+            <!-- Filas de la forma -->
+
+            <!-- Primera fila-->
+            <div class="campoCompleto">
+                <label for="nombre">Nombre</label> <!-- for conecta label con input con la id que lleva el mismo nombre -->
+                <input type="text" name="nombre" id="nombre" required> <!-- name es enviado cuando la forma es enviada -->
+            </div>
+            
+            <!-- Segunda fila-->
+            <div class="campo">
+                <label for="edad">Edad</label>
+                <input type="number" name="edad" id="edad" required>
+            </div>
+
+            <div class="campo">
+                <label for="signo">Signo</label>
+                <select name="signo" id="signo" required>
+                    <option value="Aries">Aries</option>
+                    <option value="Tauro">Tauro</option>
+                    <option value="Geminis">Geminis</option>
+                    <option value="Cancer">Cancer</option>
+                    <option value="Leo">Leo</option>
+                    <option value="Virgo">Virgo</option>
+                    <option value="Libra">Libra</option>
+                    <option value="Escorpio">Escorpio</option>
+                    <option value="Sagitario">Sagitario</option>
+                    <option value="Capricornio">Capricornio</option>
+                    <option value="Acuario">Acuario</option>
+                    <option value="Piscis">Piscis</option>
+                </select>
+            </div>
+
+            <!-- Tercera fila-->
+            <div class="campoCompleto">
+                <label for="comuna">Comuna</label>
+                <input type="text" name="comuna" id="comuna"required>
+            </div>
+
+            <!-- Sexta fila-->
+            <div class="campoCompleto">
+                <label for="descripcion">Breve descripcion de ti</label>
+                <textarea type="text" name="descripcion" id="descripcion" required></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
