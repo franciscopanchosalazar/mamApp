@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-<!-- title passed to the base file so it can be shown in the browsers tab-->
+<!-- Titulo pasado a la pestaña del navegador -->
 {% block title %}Perfil{% endblock %}
 
 {% block content %}
@@ -15,6 +15,15 @@
         <div class="gridFormas">
 
             <!-- Filas de la forma -->
+
+            <!-- Espacio para la foto -->
+            <div class="campo">
+                <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatarTest.png') }}"  alt="Foto avatar">
+            </div>
+
+            <div class="campo">
+                <h1 id="titulo">Mi Perfil</h1>
+            </div>
 
             <!-- Primera fila-->
             <div class="campoCompleto">

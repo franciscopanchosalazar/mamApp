@@ -14,6 +14,14 @@ input, textarea, select {
   padding: 10px;
 }
 
+/* Para justar el tamaño de las imagenes*/
+.ajusteImagenes {
+    width: 50%;       /* Ocupa la mitad del ancho del contenedor */
+    height: auto;     /* Mantiene proporción */
+    max-width: 400px; /* No excede este tamaño */
+}
+
+
 /* Este es el bloque morado al centro de la pantalla
    Por ende cualquier info debe llevar esta clase */
 .contenedorCentral {

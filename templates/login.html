@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+<!-- Titulo pasado a la pestaña del navegador -->
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+
+<div class="containerPrincipal">
+    <div class="encabezados">
+        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <h1 id="titulo">MAM APP test</h1>
+    </div>
+
+    <form class="contenedorCentral" method="post">
+        <div class="gridFormas">
+
+            <!-- Filas de la forma -->
+
+            <!-- Primera fila-->
+            <div class="campoCompleto">
+                <label for="email">Email</label> <!-- for conecta label con input con la id que lleva el mismo nombre -->
+                <input type="email" name="email" id="email" required> <!-- name es enviado cuando la forma es enviada -->
+            </div>
+
+            <!-- Segunda fila-->
+            <div class="campoCompleto">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" name="contraseña" id="contraseña" required>
+            </div>
+
+            <button type="submit" class="botones" id="botonEntrar">Entrar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

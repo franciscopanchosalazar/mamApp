@@ -21,3 +21,9 @@ ingresar: mysql -u root -p
 14- Trabajar en el archivo python.
 15- Trabajar en las paginas html base, registro y login.
 16- Estilizar un poco en css.
+17- Instalar mysql conector: pip install mysql-connector-python
+18- Crear un archhivo .env con las variables de inicializacion y conexión a la base de datos.
+19- Instalar dotenv para leer esas variables: pip install python-dotenv
+20- Crear un archivo de requerimientos para saber que paquetes se estan utilizando : pip freeze > requirements.txt
+21- Comenzar a trabajar en el arcchivo main.py
+22- 
