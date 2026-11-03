@@ -22,19 +22,19 @@
             </div>
 
             <div class="campo">
-                <h1 id="titulo">Mi Perfil</h1>
+                <h1 id="titulo">Modificar Perfil</h1>
             </div>
 
-            <!-- Primera fila-->
+            <!-- Primera fila -->
             <div class="campoCompleto">
                 <label for="nombre">Nombre</label> <!-- for conecta label con input con la id que lleva el mismo nombre -->
                 <input type="text" name="nombre" id="nombre" required> <!-- name es enviado cuando la forma es enviada -->
             </div>
             
-            <!-- Segunda fila-->
+            <!-- Segunda fila -->
             <div class="campo">
                 <label for="edad">Edad</label>
-                <input type="number" name="edad" id="edad" required>
+                <input type="number" min="13" max="65" name="edad" id="edad" required>
             </div>
 
             <div class="campo">
@@ -55,7 +55,7 @@
                 </select>
             </div>
 
-            <!-- Tercera fila-->
+            <!-- Tercera fila -->
             <div class="campoCompleto">
                 <label for="comuna">Comuna</label>
                 <input type="text" name="comuna" id="comuna"required>
@@ -65,6 +65,15 @@
             <div class="campoCompleto">
                 <label for="descripcion">Breve descripcion de ti</label>
                 <textarea type="text" name="descripcion" id="descripcion" required></textarea>
+            </div>
+
+            <!-- Septima fila -->
+            <div class="campo">
+                <button type="submit" class="botones">Guardar</button>
+            </div>
+
+            <div class="campo">    
+                <button type="reset" class="botones">Borrar</button>
             </div>
         </div>
     </form>

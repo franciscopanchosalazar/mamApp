@@ -1,4 +1,4 @@
-from flask import Flask, render_template    # Necesario para llamar a las paginas html
+from flask import Flask, render_template, redirect, request, url_for, session     # Necesario para llamar a las paginas html y obtener su información
 import mysql.connector # Permite a Python hablar con las bases de datos de MySQL 
 from dotenv import load_dotenv # Utilizado para traer la información privada desde el servidor a este archivo (.env)
 import os # Nos permite acceder a las variables mencionadas antes
@@ -17,7 +17,7 @@ db = mysql.connector.connect(
     database=os.getenv("DB_NAME")
 )
 @app.route("/")
-def register():
+def home():
     return render_template("register.html")
     #return render_template("dashboard.html")
     #return render_template("login.html")
@@ -25,12 +25,35 @@ def register():
 
 # Usuarios
 
-@app.route('/registrar' , methods=['GET', 'POST'])
+@app.route('/registrar' , methods=['POST'])
 def registrar_usuario():
-    cursor = db.cursor()
+    cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
 
-    # Debo comenzar a trabajar aca 
+    if request.method == "POST":
+        print("Formulario recibido")
+        nombre_usuario =  request.form["nombre"]
+        email = request.form["email"]
+        contraseña = request.form["contraseña"]
+
+        # Utilizado para probar si estamos obteniendo info de la forma de resgistro
+        print(nombre_usuario)
+        print(email)
+        print(contraseña)
+
+        return redirect(url_for("modificar_perfil"))
+
+    # NO OLVIDAR VOLVER ACA
+
+    # Encripta (Hash) la contraseña antes de guardar
+    # contraseña_encriptada = generate_password_hash(contraseña)
+
     return render_template("register.html")
+# ------------------------------------------------------------------------------------------------------------------------------
+
+@app.route('/modificar_perfil' , methods=['GET', 'POST'])
+def modificar_perfil():
+    cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
+    return render_template("dashboard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
