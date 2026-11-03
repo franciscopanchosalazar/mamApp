@@ -14,6 +14,10 @@ input, textarea, select {
   padding: 10px;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* Para justar el tamaño de las imagenes*/
 .ajusteImagenes {
     width: 50%;       /* Ocupa la mitad del ancho del contenedor */

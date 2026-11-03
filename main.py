@@ -25,7 +25,7 @@ def home():
 
 # Usuarios
 
-@app.route('/registrar' , methods=['POST'])
+@app.route('/registrar' , methods=['GET', 'POST'])
 def registrar_usuario():
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
 
@@ -50,10 +50,48 @@ def registrar_usuario():
     return render_template("register.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
+@app.route("/iniciar_sesion", methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        email =  request.form["email"]
+        contraseña = request.form["contraseña"]
+
+        # PARA HACER PRUEBAS
+        print(email)
+        print(contraseña)
+
+        return redirect(url_for("modificar_perfil"))
+
+    return render_template("login.html")
+# ------------------------------------------------------------------------------------------------------------------------------
+
 @app.route('/modificar_perfil' , methods=['GET', 'POST'])
 def modificar_perfil():
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
+
+    if request.method == "POST":
+        nombre =  request.form["nombre"]
+        edad = request.form["edad"]
+        signo = request.form["signo"]
+        comuna = request.form["comuna"]
+        descripcion = request.form["descripcion"]
+    
+        # PARA HACER PRUEBAS
+        print(nombre)
+        print(edad)
+        print(signo)
+        print(comuna)
+        print(descripcion)
+
+        return redirect(url_for("perfil"))
+
+    return render_template("editProfile.html")
+# ------------------------------------------------------------------------------------------------------------------------------
+
+@app.route('/perfil' , methods=['GET', 'POST'])
+def perfil():
     return render_template("dashboard.html")
+# ------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
