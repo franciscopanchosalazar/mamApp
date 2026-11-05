@@ -1,26 +1,27 @@
-from flask import Flask, render_template, redirect, request, url_for, session     # Necesario para llamar a las paginas html y obtener su información
+from flask import Flask, render_template, redirect, request, url_for, session, jsonify     # Necesario para llamar a las paginas html y obtener su información
 import mysql.connector # Permite a Python hablar con las bases de datos de MySQL 
 from dotenv import load_dotenv # Utilizado para traer la información privada desde el servidor a este archivo (.env)
 import os # Nos permite acceder a las variables mencionadas antes
+# Utilizado para hash (encriptar) una contraseña
+from werkzeug.security import generate_password_hash, check_password_hash
+
 app = Flask(__name__)   # Inicializa un objeto de la clase Flask
 
 # Lee el archivo .env y hace que los valores dentro de él esten disponibles para el programa. 
 
 load_dotenv()
 
-# Connect to mysql using credentials stored in .env
-# mysql.connector.connect will always ask for host, user, password and database
+# Conecta a mysql usando las credenciales que se encuentran dentro de .env
 db = mysql.connector.connect(
     host=os.getenv("DB_HOST"),
     user=os.getenv("DB_USER"),
     password=os.getenv("DB_PASSWORD"),
     database=os.getenv("DB_NAME")
 )
+
 @app.route("/")
 def home():
     return render_template("register.html")
-    #return render_template("dashboard.html")
-    #return render_template("login.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
 # Usuarios
@@ -30,22 +31,24 @@ def registrar_usuario():
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
 
     if request.method == "POST":
-        print("Formulario recibido")
         nombre_usuario =  request.form["nombre"]
         email = request.form["email"]
         contraseña = request.form["contraseña"]
+
+        # Hash the password before saving
+        contraseña_encriptada = generate_password_hash(contraseña)
 
         # Utilizado para probar si estamos obteniendo info de la forma de resgistro
         print(nombre_usuario)
         print(email)
         print(contraseña)
+        print(contraseña_encriptada)
+    
+        sql_query = "INSERT INTO usuarios (nombre_usuario, email, contraseña_encriptada) VALUES (%s, %s, %s)" 
+        cursor.execute(sql_query, (nombre_usuario, email, contraseña_encriptada))
+        db.commit()
 
         return redirect(url_for("modificar_perfil"))
-
-    # NO OLVIDAR VOLVER ACA
-
-    # Encripta (Hash) la contraseña antes de guardar
-    # contraseña_encriptada = generate_password_hash(contraseña)
 
     return render_template("register.html")
 # ------------------------------------------------------------------------------------------------------------------------------
@@ -60,7 +63,7 @@ def login():
         print(email)
         print(contraseña)
 
-        return redirect(url_for("modificar_perfil"))
+        return redirect(url_for("perfil"))
 
     return render_template("login.html")
 # ------------------------------------------------------------------------------------------------------------------------------

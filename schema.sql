@@ -9,5 +9,5 @@ CREATE TABLE usuarios(
     signo VARCHAR(100),
     comuna VARCHAR(100),
     descripcion TEXT,
-    password_hash VARCHAR(500)
+    contraseña_encriptada VARCHAR(500) NOT NULL
 );
