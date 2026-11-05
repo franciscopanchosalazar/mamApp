@@ -3,8 +3,8 @@ USE mamApp;
 
 CREATE TABLE usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_usuario VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    nombre_usuario VARCHAR(100) UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     edad VARCHAR(100),
     signo VARCHAR(100),
     comuna VARCHAR(100),

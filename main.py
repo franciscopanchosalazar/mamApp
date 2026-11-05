@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for, session, jsonify     # Necesario para llamar a las paginas html y obtener su información
+from flask import Flask, render_template, redirect, request, url_for, session, jsonify    # Necesario para llamar a las paginas html y obtener su información
 import mysql.connector # Permite a Python hablar con las bases de datos de MySQL 
 from dotenv import load_dotenv # Utilizado para traer la información privada desde el servidor a este archivo (.env)
 import os # Nos permite acceder a las variables mencionadas antes
@@ -6,6 +6,7 @@ import os # Nos permite acceder a las variables mencionadas antes
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)   # Inicializa un objeto de la clase Flask
+app.secret_key = "mi_app_key" # Crea una session key
 
 # Lee el archivo .env y hace que los valores dentro de él esten disponibles para el programa. 
 
@@ -31,22 +32,24 @@ def registrar_usuario():
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
 
     if request.method == "POST":
-        nombre_usuario =  request.form["nombre"]
         email = request.form["email"]
         contraseña = request.form["contraseña"]
 
-        # Hash the password before saving
+        # Encripta la contraseña antes de guardarla
         contraseña_encriptada = generate_password_hash(contraseña)
 
         # Utilizado para probar si estamos obteniendo info de la forma de resgistro
-        print(nombre_usuario)
         print(email)
         print(contraseña)
         print(contraseña_encriptada)
     
-        sql_query = "INSERT INTO usuarios (nombre_usuario, email, contraseña_encriptada) VALUES (%s, %s, %s)" 
-        cursor.execute(sql_query, (nombre_usuario, email, contraseña_encriptada))
+        sql_query = "INSERT INTO usuarios (email, contraseña_encriptada) VALUES (%s, %s);" 
+        cursor.execute(sql_query, (email, contraseña_encriptada))
         db.commit()
+
+        # Obtener id para saber usuario actual.
+        session["id"] = cursor.lastrowid
+        session["email"] = email
 
         return redirect(url_for("modificar_perfil"))
 
@@ -68,6 +71,13 @@ def login():
     return render_template("login.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
+@app.route('/cerrar_sesion')
+def logout():
+    session.pop("id_usuario", None) # Remueve al usuario de la sesion si es que este existe.
+    session.pop("email", None)
+    return redirect(url_for("registrar_usuario"))
+# ------------------------------------------------------------------------------------------------------------------------------
+
 @app.route('/modificar_perfil' , methods=['GET', 'POST'])
 def modificar_perfil():
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
@@ -86,6 +96,20 @@ def modificar_perfil():
         print(comuna)
         print(descripcion)
 
+        # Obtiene la id de la sesion actual
+        id_usuario = session.get("id")
+
+        sql_query = """UPDATE usuarios SET 
+        nombre_usuario = %s,
+        edad = %s, 
+        signo = %s, 
+        comuna= %s, 
+        descripcion = %s
+        WHERE id = %s;""" 
+
+        cursor.execute(sql_query, (nombre, edad, signo, comuna, descripcion, id_usuario))
+        db.commit()
+        
         return redirect(url_for("perfil"))
 
     return render_template("editProfile.html")
