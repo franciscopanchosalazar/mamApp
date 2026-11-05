@@ -39,16 +39,18 @@ def registrar_usuario():
         contraseña_encriptada = generate_password_hash(contraseña)
 
         # Utilizado para probar si estamos obteniendo info de la forma de resgistro
+        """
         print(email)
         print(contraseña)
         print(contraseña_encriptada)
-    
+        """
+
         sql_query = "INSERT INTO usuarios (email, contraseña_encriptada) VALUES (%s, %s);" 
         cursor.execute(sql_query, (email, contraseña_encriptada))
         db.commit()
 
         # Obtener id para saber usuario actual.
-        session["id"] = cursor.lastrowid
+        session["id_usuario"] = cursor.lastrowid
         session["email"] = email
 
         return redirect(url_for("modificar_perfil"))
@@ -58,6 +60,8 @@ def registrar_usuario():
 
 @app.route("/iniciar_sesion", methods=['GET', 'POST'])
 def login():
+    cursor = db.cursor()
+
     if request.method == "POST":
         email =  request.form["email"]
         contraseña = request.form["contraseña"]
@@ -66,20 +70,46 @@ def login():
         print(email)
         print(contraseña)
 
-        return redirect(url_for("perfil"))
+        # Verifica la existencia del usuario
+        sql_query = "SELECT id, nombre_usuario, email, contraseña_encriptada FROM usuarios WHERE email = %s"
+        cursor.execute(sql_query, (email,))
+        usuario = cursor.fetchone()
+
+        if usuario==None:
+            print(f"{email} no se encuentra registrado" ) # MODIFICAR ESTE PRINT POR ALGUNA OTRA ACCION
+        else:
+            # Verifica la contraseña
+            if usuario and check_password_hash(usuario[3], contraseña): # usuario[3] representa la contraseña encriptada.
+
+                # Recordar usuario actual
+                session["id_usuario"] = usuario[0]  # usuario[0] representa al id del usuario.
+                session["email"] = email
+                session["nombre_usuario"] = usuario[1] # usuario[1] representa al nombre de usuario.
+
+                return redirect(url_for("perfil"))
+            else:
+                # MODIFICAR ESTE PRINT POR ALGUNA OTRA ACCION                
+                print(f"{usuario[2]} es valido.")
+                print("Contraseña equivocada.")
 
     return render_template("login.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
 @app.route('/cerrar_sesion')
 def logout():
-    session.pop("id_usuario", None) # Remueve al usuario de la sesion si es que este existe.
-    session.pop("email", None)
+    session.clear() # Remueve al usuario de la sesion si es que este existe.
     return redirect(url_for("registrar_usuario"))
 # ------------------------------------------------------------------------------------------------------------------------------
 
 @app.route('/modificar_perfil' , methods=['GET', 'POST'])
 def modificar_perfil():
+    # Obtiene la id de la sesion actual
+    id_usuario = session.get("id_usuario")
+
+    # Asegura que tengamos un usuario activo
+    if "id_usuario" not in session:
+        return redirect(url_for("registrar_usuario"))
+    
     cursor = db.cursor()    # Utilizado para llevar a cabo las queries de MySql
 
     if request.method == "POST":
@@ -90,14 +120,13 @@ def modificar_perfil():
         descripcion = request.form["descripcion"]
     
         # PARA HACER PRUEBAS
+        """
         print(nombre)
         print(edad)
         print(signo)
         print(comuna)
         print(descripcion)
-
-        # Obtiene la id de la sesion actual
-        id_usuario = session.get("id")
+        """
 
         sql_query = """UPDATE usuarios SET 
         nombre_usuario = %s,
@@ -109,6 +138,9 @@ def modificar_perfil():
 
         cursor.execute(sql_query, (nombre, edad, signo, comuna, descripcion, id_usuario))
         db.commit()
+
+        # Al igual que id_usuario e eimail, almacenamos el nombre (obtenido de la forma) en la sesion.
+        session["nombre_usuario"] = nombre
         
         return redirect(url_for("perfil"))
 
@@ -117,6 +149,9 @@ def modificar_perfil():
 
 @app.route('/perfil' , methods=['GET', 'POST'])
 def perfil():
+    if "id_usuario" not in session:
+        return redirect(url_for("registrar_usuario"))
+    
     return render_template("dashboard.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 

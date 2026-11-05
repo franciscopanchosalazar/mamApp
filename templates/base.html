@@ -14,8 +14,8 @@
     </header>
 
     <!-- Muestra el nombre del usuario -->
-    {% if session.get('username') %}
-        {{ session.get('username') }}
+    {% if session.get('nombre_usuario') %}
+        {{ session.get('nombre_usuario') }}
     {% endif %}
 
     <!-- Todo el contenido desde los archivos html se ubican acá al momento de ser llamados -->

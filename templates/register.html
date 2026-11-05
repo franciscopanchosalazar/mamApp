@@ -11,7 +11,7 @@
         <h1 id="titulo">MAM APP test</h1>
     </div>
 
-    <form class="contenedorCentral" action="/registrar" method="POST">
+    <form class="contenedorCentral" method="POST">
         <div class="gridFormas">
 
             <!-- Filas de la forma -->
@@ -28,10 +28,8 @@
                 <input type="password" name="contraseña" id="contraseña" required>
             </div>
 
-            <button type="submit" class="botones" id="botonRegistrar">Registrar</button>
-            <a href="{{ url_for('login') }}">
-                <button type="button" class="botones">Iniciar Sesión</button>
-            </a>
+            <button formaction="/registrar" class="botones" id="botonRegistrar">Registrar</button>
+            <button formaction="/iniciar_sesion" class="botones" id="botonEntrar">Iniciar Sesión</button>
         </div>
     </form>
 </div>
