@@ -78,26 +78,30 @@ a{
 }
 
 /* Comportamiento y estetica de todos los botones */
-.botones {
-  display: block;
-  width: 95%;
-  margin: 10px auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 18px;
+.botones{
+    display: block;
+    width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+
+    background-color: #f3cce0;
+    color: #4e3a4a;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 18px;
+    text-align: center;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    text-decoration: none; /* Removes underline from <a> */
+    box-sizing: border-box; /* Makes width behave nicely */
 }
 
-.botones {
-  background-color: #f3cce0;
-  color: #4e3a4a;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.botones:hover {
-  background-color: #e4e1e4;
-  color: #333;
-  font-weight: bold;
+.botones:hover{
+    background-color: #e4e1e4;
+    color: #333;
+    font-weight: bold;
 }

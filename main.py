@@ -67,8 +67,8 @@ def login():
         contraseña = request.form["contraseña"]
 
         # PARA HACER PRUEBAS
-        print(email)
-        print(contraseña)
+        #print(email)
+        #print(contraseña)
 
         # Verifica la existencia del usuario
         sql_query = "SELECT id, nombre_usuario, email, contraseña_encriptada FROM usuarios WHERE email = %s"

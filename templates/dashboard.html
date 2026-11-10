@@ -4,7 +4,23 @@
 {% block title %}Perfil{% endblock %}
 
 {% block content %}
+<div class="containerPrincipal">
+    <div class="encabezados">
+        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <h1 id="titulo">MAM APP test</h1>
+    </div>
+    
+    <div class="contenedorCentral">
+        <div class="gridFormas">
+            <form class="campoCompleto" action="{{ url_for('modificar_perfil') }}" method="GET">
+                <button type="submit" class="botones">Modidicar perfil</button>
+            </form>
 
-<h1>Dashboard sera mostrado aca</h1>
+            <form class="campoCompleto" action="{{ url_for('logout') }}" method="GET">
+                <button type="submit" class="botones">Cerrar sesion</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
