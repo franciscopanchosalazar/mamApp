@@ -7,6 +7,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon-mamApp-32x32.png') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
     
 <body>
@@ -21,6 +22,8 @@
 
     <!-- Todo el contenido desde los archivos html se ubican acá al momento de ser llamados -->
     {% block content %}{% endblock %} 
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <!--Referencia al script desde otro archivo-->
     <script src="{{ url_for('static', filename='script.js') }}"></script>

@@ -155,5 +155,11 @@ def perfil():
     return render_template("dashboard.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
+# Probablemente no lo use mas que para pruebas
+@app.route('/mapa')
+def mapa():
+    return render_template("map.html")
+# ------------------------------------------------------------------------------------------------------------------------------
+
 if __name__ == "__main__":
     app.run(debug=True)
