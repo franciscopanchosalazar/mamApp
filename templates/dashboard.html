@@ -12,13 +12,17 @@
     
     <div class="contenedorCentral">
         <div class="gridFormas">
-            <form class="campoCompleto" action="{{ url_for('modificar_perfil') }}" method="GET">
-                <button type="submit" class="botones">Modidicar perfil</button>
-            </form>
+            <div class="campoCompleto">
+                <a href="#" id="compartirUbicacion" class="botones">Compartir ubicacion</a>            
+            </div>
 
-            <form class="campoCompleto" action="{{ url_for('logout') }}" method="GET">
-                <button type="submit" class="botones">Cerrar sesion</button>
-            </form>
+            <div class="campoCompleto">
+                <a href="{{ url_for('modificar_perfil') }}" class="botones">Modificar perfil</a>
+            </div>
+            
+            <div class="campoCompleto">
+                <a href="{{ url_for('logout') }}" class="botones">Cerrar sesion</a>
+            </div>
         </div>
     </div>
 </div>

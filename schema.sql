@@ -11,3 +11,9 @@ CREATE TABLE usuarios(
     descripcion TEXT,
     contraseña_encriptada VARCHAR(500) NOT NULL
 );
+
+ALTER TABLE usuarios
+ADD latitud DECIMAL(10,8) NULL;
+
+ALTER TABLE usuarios
+ADD longitud DECIMAL(11,8) NULL;

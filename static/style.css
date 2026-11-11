@@ -1,8 +1,8 @@
 /* General */
-@font-face {
+/*@font-face {
     font-family: 'JosefinSans';
     src: url('../fonts/JosefinSans-Light.ttf') format('truetype');
-}
+}*/
 
 body {
     background-color: #f3cce0;
@@ -25,7 +25,6 @@ a{
     max-width: 400px; /* No excede este tamaño */
 }
 
-
 /* Este es el bloque morado al centro de la pantalla
    Por ende cualquier info debe llevar esta clase */
 .contenedorCentral {
@@ -47,7 +46,6 @@ a{
     display: flex;
     flex-direction: column;
     color: #e4e1e4;
-    font-weight: bold;
     font-size: 18px;
 }
 
@@ -70,7 +68,7 @@ a{
 }
 
 .encabezados {
-    font-family: 'JosefinSans', serif !important;
+    /*font-family: 'JosefinSans', serif !important;*/
     margin: 20px auto;
     display: flex;
     align-items: center;
@@ -96,8 +94,8 @@ a{
     cursor: pointer;
     transition: 0.3s;
 
-    text-decoration: none; /* Removes underline from <a> */
-    box-sizing: border-box; /* Makes width behave nicely */
+    text-decoration: none; 
+    box-sizing: border-box; 
 }
 
 .botones:hover{
@@ -105,3 +103,10 @@ a{
     color: #333;
     font-weight: bold;
 }
+
+/* Cambia tambien las letras de los botones */
+.botones:hover a{
+    font-weight: bold;
+    color: #333;
+}
+

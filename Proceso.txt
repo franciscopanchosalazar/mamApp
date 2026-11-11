@@ -26,4 +26,5 @@ ingresar: mysql -u root -p
 19- Instalar dotenv para leer esas variables: pip install python-dotenv
 20- Crear un archivo de requerimientos para saber que paquetes se estan utilizando : pip freeze > requirements.txt
 21- Comenzar a trabajar en el arcchivo main.py
-22- 
+22- Trabajar en paralelo con los diferentes archivos html, css y js (si se requiere)
+23- Modificar tabla para comenzar a trabajar en las cordenadas del mapa (ver schema)
