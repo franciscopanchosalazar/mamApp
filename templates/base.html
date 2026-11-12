@@ -15,11 +15,6 @@
         <!-- <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/mamApp.jpg') }}"> -->
     </header>
 
-    <!-- Muestra el nombre del usuario -->
-    {% if session.get('nombre_usuario') %}
-        {{ session.get('nombre_usuario') }}
-    {% endif %}
-
     <!-- Todo el contenido desde los archivos html se ubican acá al momento de ser llamados -->
     {% block content %}{% endblock %} 
 

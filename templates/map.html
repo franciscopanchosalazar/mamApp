@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+<!-- Titulo pasado a la pestaña del navegador -->
+{% block title %}Mapa{% endblock %}
+
+{% block content %}
+<div class="containerPrincipal">
+    <div class="encabezados">
+        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <h1 id="titulo">MAM APP test</h1>
+    </div>
+    
+    <div class="contenedorPaginas">
+        <div class="gridFormas">
+            <div class="campoClaro">
+                <h1>Mapa de mamás</h1>
+            </div>
+
+            <div id="mapa" class="campoCompletoObscuro">
+                <link href="https://unpkg.com/leaflet/dist/leaflet.css">
+            </div>   
+            
+            <div class="campoObscuro">
+                <a href="#" id="compartirUbicacion" class="botonesAnchos">Compartir ubicacion</a>            
+            </div>
+
+            <div class="campoObscuro">
+                <a href="{{ url_for('perfil') }}" class="botonesAnchos">Inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

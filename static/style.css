@@ -27,8 +27,15 @@ a{
 
 /* Este es el bloque morado al centro de la pantalla
    Por ende cualquier info debe llevar esta clase */
-.contenedorCentral {
+.contenedorFormas {
     background-color: #4e3a4a;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.contenedorPaginas {
+    background-color: #f7f7f7;
     padding: 20px;
     border: 1px solid;
     border-radius: 15px;
@@ -42,16 +49,25 @@ a{
 }
 
 /* Utilizado para estilizar las letras de cada campo */
-.campo, .campoCompleto {
+.campoObscuro, .campoCompletoObscuro, .campoClaro, .campoCompletoClaro {
     display: flex;
     flex-direction: column;
-    color: #e4e1e4;
     font-size: 18px;
 }
 
 /* Utilizado para que un elemento ocupe todo el espacio horizontal */
-.campoCompleto {
+.campoCompletoObscuro, .campoCompletoClaro {
     grid-column: 1 / 3;
+}
+
+/* Utilizado para modificar color de letras de los campos */
+
+.campoObscuro, .campoCompletoObscuro {
+    color: #e1e3e4;
+}
+
+.campoClaro, .campoCompletoClaro{
+    color: #4e3a4a;
 }
 
 /* Utilizado para alinear encabezados con el contenedor central */
@@ -81,19 +97,15 @@ a{
     width: 95%;
     margin: 10px auto;
     padding: 10px;
-
     background-color: #f3cce0;
     color: #4e3a4a;
-
     border: none;
     border-radius: 6px;
-
     font-size: 18px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
-
     cursor: pointer;
     transition: 0.3s;
-
     text-decoration: none; 
     box-sizing: border-box; 
 }
@@ -108,6 +120,36 @@ a{
 .botones:hover a{
     font-weight: bold;
     color: #333;
+}
+
+.botonesAnchos{
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 30px 30px;
+    background-color: #fff;
+    color: #4e3a4a;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none; 
+    box-sizing: border-box; 
+}
+
+.botonesAnchos:hover{
+    background-color: #4e3a4a;
+    color: #e4e1e4;
+    /*font-weight: bold;*/
+}
+
+/* Cambia tambien las letras de los botones */
+.botonesAnchos:hover a{
+    font-weight: bold;
+    color: #e4e1e4;
 }
 
 #mapa{

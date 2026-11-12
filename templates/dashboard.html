@@ -10,21 +10,48 @@
         <h1 id="titulo">MAM APP test</h1>
     </div>
     
-    <div class="contenedorCentral">
+    <div class="contenedorPaginas">
         <div class="gridFormas">
-            <div id="mapa" class="campoCompleto">
-                <link href="https://unpkg.com/leaflet/dist/leaflet.css">
-            </div>    
 
-            <div class="campoCompleto">
-                <a href="#" id="compartirUbicacion" class="botones">Compartir ubicacion</a>            
+            <!-- Espacio para la foto -->
+            <div class="campoClaro">
+                <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatarTest.png') }}"  alt="Foto avatar">
             </div>
 
-            <div class="campoCompleto">
+            <div class="campoClaro">
+                <!-- Muestra el nombre del usuario -->
+                <h1 id="tituloPerfil">¡Hola, {{ nombre_usuario }}!</h1>
+            </div>
+
+            <div class="campoClaro">
+                <a href="{{ url_for('mapa') }}" class="botonesAnchos">Mapa de mamá</a>
+            </div>
+            
+            <div>
+                <a class="botonesAnchos">Servicios y descuentos</a>
+            </div>
+
+            <div>
+                <a class="botonesAnchos">Asesorias en maternidad</a>
+            </div>
+            
+            <div>
+                <a class="botonesAnchos">Test de salud emocional</a>
+            </div>
+
+            <div>
+                <a class="botonesAnchos">Chat de desahogo</a>
+            </div>
+            
+            <div>
+                <a class="botonesAnchos">Recomendaciones</a>
+            </div>
+
+            <div class="campoCompletoObscuro">
                 <a href="{{ url_for('modificar_perfil') }}" class="botones">Modificar perfil</a>
             </div>
             
-            <div class="campoCompleto">
+            <div class="campoCompletoObscuro">
                 <a href="{{ url_for('logout') }}" class="botones">Cerrar sesion</a>
             </div>
         </div>

@@ -11,34 +11,34 @@
         <h1 id="titulo">MAM APP test</h1>
     </div>
 
-    <div class="contenedorCentral">
+    <div class="contenedorFormas">
         <form method="post">
             <div class="gridFormas">
 
                 <!-- Filas de la forma -->
 
                 <!-- Espacio para la foto -->
-                <div class="campo">
+                <div class="campoObscuro">
                     <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatarTest.png') }}"  alt="Foto avatar">
                 </div>
 
-                <div class="campo">
-                    <h1 id="titulo">Modificar Perfil</h1>
+                <div class="campoObscuro">
+                    <h1 id="tituloModificarPerfil">Modificar Perfil</h1>
                 </div>
 
                 <!-- Primera fila -->
-                <div class="campoCompleto">
+                <div class="campoCompletoObscuro">
                     <label for="nombre">Nombre</label> <!-- for conecta label con input con la id que lleva el mismo nombre -->
                     <input type="text" name="nombre" id="nombre" required> <!-- name es enviado cuando la forma es enviada -->
                 </div>
                 
                 <!-- Segunda fila -->
-                <div class="campo">
+                <div class="campoObscuro">
                     <label for="edad">Edad</label>
                     <input type="number" min="13" max="65" name="edad" id="edad" required>
                 </div>
 
-                <div class="campo">
+                <div class="campoObscuro">
                     <label for="signo">Signo</label>
                     <select name="signo" id="signo" required>
                         <option value="Aries">Aries</option>
@@ -57,25 +57,25 @@
                 </div>
 
                 <!-- Tercera fila -->
-                <div class="campoCompleto">
+                <div class="campoCompletoObscuro">
                     <label for="comuna">Comuna</label>
                     <input type="text" name="comuna" id="comuna"required>
                 </div>
 
                 <!-- Sexta fila-->
-                <div class="campoCompleto">
+                <div class="campoCompletoObscuro">
                     <label for="descripcion">Breve descripcion de ti</label>
                     <textarea type="text" name="descripcion" id="descripcion" required></textarea>
                 </div>
 
                 <!-- Septima fila -->
-                <div class="campoCompleto">
+                <div class="campoCompletoObscuro">
                     <button type="submit" class="botones">Guardar</button>
                 </div>
             </div>
         </form>
 
-        <div class="campoCompleto">
+        <div class="campoCompletoObscuro">
             <a href="{{ url_for('perfil') }}" class="botones">Cancelar</a>
         </div>
     </div>

@@ -151,13 +151,17 @@ def modificar_perfil():
 def perfil():
     if "id_usuario" not in session:
         return redirect(url_for("registrar_usuario"))
-    
-    return render_template("dashboard.html")
+
+    nombre_usuario = session.get("nombre_usuario")
+    return render_template("dashboard.html", nombre_usuario=nombre_usuario)
 # ------------------------------------------------------------------------------------------------------------------------------
 
 # Probablemente no lo use mas que para pruebas
 @app.route('/mapa')
 def mapa():
+    if "id_usuario" not in session:
+        return redirect(url_for("registrar_usuario"))
+
     return render_template("map.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
