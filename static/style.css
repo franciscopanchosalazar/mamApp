@@ -61,7 +61,6 @@ a{
 }
 
 /* Utilizado para modificar color de letras de los campos */
-
 .campoObscuro, .campoCompletoObscuro {
     color: #e1e3e4;
 }
@@ -91,6 +90,25 @@ a{
     gap: 20px;
 }
 
+/* Ajuste de imagen y titulos seccion saludo y página*/
+.campoClaro img, .campoObscuro img {
+    padding: 0px 0px 0px 35px;
+}
+
+#linkModificarPerfil {
+    color: #4e3a4a;
+    padding-left: 60px;
+}
+
+#linkCambiarImagen {
+    color: #e4e1e4;
+    padding-left: 45px;
+}
+
+#tituloModificarPerfil, #tituloPerfil{
+    padding: 20px 0px 0px 0px;
+}
+
 /* Comportamiento y estetica de todos los botones */
 .botones{
     display: block;
@@ -101,7 +119,11 @@ a{
     color: #4e3a4a;
     border: none;
     border-radius: 6px;
+
     font-size: 18px;
+    font-family: inherit;
+    font-weight: normal;
+
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;

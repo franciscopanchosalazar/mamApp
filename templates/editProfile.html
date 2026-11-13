@@ -7,7 +7,7 @@
 
 <div class="containerPrincipal">
     <div class="encabezados">
-        <img src="{{ url_for('static', filename='images/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <img src="{{ url_for('static', filename='images/logos/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
         <h1 id="titulo">MAM APP test</h1>
     </div>
 
@@ -19,7 +19,8 @@
 
                 <!-- Espacio para la foto -->
                 <div class="campoObscuro">
-                    <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatarTest.png') }}"  alt="Foto avatar">
+                    <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatars/avatarTest.png') }}"  alt="Foto avatar">
+                    <a id="linkCambiarImagen" href="#">Cambiar imagen</a>
                 </div>
 
                 <div class="campoObscuro">
@@ -69,14 +70,18 @@
                 </div>
 
                 <!-- Septima fila -->
-                <div class="campoCompletoObscuro">
+                <div class="campoObscuro">
                     <button type="submit" class="botones">Guardar</button>
+                </div>
+                
+                <div class="campoObscuro">
+                    <a href="{{ url_for('perfil') }}" class="botones">Cancelar</a>
                 </div>
             </div>
         </form>
 
         <div class="campoCompletoObscuro">
-            <a href="{{ url_for('perfil') }}" class="botones">Cancelar</a>
+            <a href="{{ url_for('logout') }}" class="botones">Cerrar sesion</a>
         </div>
     </div>
 </div>
