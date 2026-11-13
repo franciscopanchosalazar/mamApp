@@ -156,13 +156,20 @@ def perfil():
     return render_template("dashboard.html", nombre_usuario=nombre_usuario)
 # ------------------------------------------------------------------------------------------------------------------------------
 
-# Probablemente no lo use mas que para pruebas
 @app.route('/mapa')
 def mapa():
     if "id_usuario" not in session:
         return redirect(url_for("registrar_usuario"))
 
     return render_template("map.html")
+# ------------------------------------------------------------------------------------------------------------------------------
+
+@app.route("/seleccionar_avatar")
+def seleccionar_avatar():
+    if "id_usuario" not in session:
+        return redirect(url_for("registrar_usuario"))
+    
+    return render_template("seleccionarAvatar.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":

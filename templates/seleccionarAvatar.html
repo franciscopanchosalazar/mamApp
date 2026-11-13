@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+<!-- Titulo pasado a la pestaña del navegador -->
+{% block title %}Seleccionar avatar{% endblock %}
+
+{% block content %}
+
+<div class="containerPrincipal">
+    <div class="encabezados">
+        <img src="{{ url_for('static', filename='images/logos/mamApp.jpg') }}" alt="Logo MamApp" class="logo">
+        <h1 id="titulo">MAM APP test</h1>
+    </div>
+
+    <form method="POST" class="contenedorFormas">
+        <div class="gridAvatares"> 
+            
+            <div class="campoObscuro">
+                <h1 class="titulosCentrales">Selecciona tu avatar</h1>
+            </div>
+
+            <div class="contenedorAvatares"> 
+                <!-- Cada avatar sera manejado como un boton de radio -->
+                <label>
+                    <input type="radio" name="avatar" value="avatar1.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_1.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar2.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_2.jpeg') }}" class="avatarOpcion">
+                </label>
+                
+                <label>
+                    <input type="radio" name="avatar" value="avatar3.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_3.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar4.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_4.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar5.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_5.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar6.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_6.jpeg') }}" class="avatarOpcion">
+                </label>
+                
+                <label>
+                    <input type="radio" name="avatar" value="avatar7.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_7.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar8.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_8.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar9.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_9.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar10.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_10.jpeg') }}" class="avatarOpcion">
+                </label>
+                
+                <label>
+                    <input type="radio" name="avatar" value="avatar11.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_11.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar12.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_12.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar13.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_13.jpeg') }}" class="avatarOpcion">
+                </label>
+                
+                <label>
+                    <input type="radio" name="avatar" value="avatar14.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_14.jpeg') }}" class="avatarOpcion">
+                </label>
+
+                <label>
+                    <input type="radio" name="avatar" value="avatar15.png">
+                    <img src="{{ url_for('static', filename='images/avatars/mam_avatar_15.jpeg') }}" class="avatarOpcion">
+                </label>
+            </div>
+        </div> 
+
+        <div>
+            <button type="submit" class="botones">Guardar</button>
+        </div>
+        
+        <div>
+            <a href="{{ url_for('perfil') }}" class="botones">Cancelar</a>
+        </div>
+    </form> 
+
+</div>
+{% endblock %}
