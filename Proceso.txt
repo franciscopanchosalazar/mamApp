@@ -28,3 +28,4 @@ ingresar: mysql -u root -p
 21- Comenzar a trabajar en el arcchivo main.py
 22- Trabajar en paralelo con los diferentes archivos html, css y js (si se requiere)
 23- Modificar tabla para comenzar a trabajar en las cordenadas del mapa (ver schema)
+24- Modificar tabla para trabajar en la selección del avatar (ver schema)

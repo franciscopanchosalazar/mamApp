@@ -15,7 +15,8 @@
 
             <!-- Espacio para la foto -->
             <div class="campoClaro">
-                <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatars/avatarTest.png') }}"  alt="Foto avatar">
+                <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatars/' + avatar) }}" alt="Imagen avatar">
+                <!-- <img class="ajusteImagenes" src="{{ url_for('static', filename='images/avatars/mam_avatar_5.jpeg') }}"  alt="Foto avatar"> -->
                 <a id="linkModificarPerfil" href="{{ url_for('modificar_perfil') }}">Editar perfil</a>
             </div>
 
@@ -25,7 +26,7 @@
             </div>
 
             <div class="campoClaro">
-                <a href="{{ url_for('mapa') }}" class="botonesAnchos">Mapa de mamá</a>
+                <a href="{{ url_for('mapa') }}" class="botonesAnchos">Mapa de mamás</a>
             </div>
             
             <div>

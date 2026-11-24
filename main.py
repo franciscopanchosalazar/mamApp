@@ -45,8 +45,8 @@ def registrar_usuario():
         print(contraseña_encriptada)
         """
 
-        sql_query = "INSERT INTO usuarios (email, contraseña_encriptada) VALUES (%s, %s);" 
-        cursor.execute(sql_query, (email, contraseña_encriptada))
+        sql_query = "INSERT INTO usuarios (email, contraseña_encriptada, avatar) VALUES (%s, %s, %s);" 
+        cursor.execute(sql_query, (email, contraseña_encriptada, "mam_avatar_2.jpeg"))
         db.commit()
 
         # Obtener id para saber usuario actual.
@@ -92,7 +92,6 @@ def login():
                 print(f"{usuario[2]} es valido.")
                 print("Contraseña equivocada.")
 
-    return render_template("login.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
 @app.route('/cerrar_sesion')
@@ -152,8 +151,14 @@ def perfil():
     if "id_usuario" not in session:
         return redirect(url_for("registrar_usuario"))
 
-    nombre_usuario = session.get("nombre_usuario")
-    return render_template("dashboard.html", nombre_usuario=nombre_usuario)
+    id_usuario = session.get("id_usuario")
+
+    cursor = db.cursor()
+    sql_query = "SELECT nombre_usuario, avatar FROM usuarios WHERE id = %s"
+    cursor.execute(sql_query, (id_usuario,))
+    usuario = cursor.fetchone()
+
+    return render_template("dashboard.html", nombre_usuario=usuario[0], avatar=usuario[1])
 # ------------------------------------------------------------------------------------------------------------------------------
 
 @app.route('/mapa')
@@ -164,10 +169,23 @@ def mapa():
     return render_template("map.html")
 # ------------------------------------------------------------------------------------------------------------------------------
 
-@app.route("/seleccionar_avatar")
+@app.route("/seleccionar_avatar", methods=["GET", "POST"])
 def seleccionar_avatar():
+    id_usuario = session.get("id_usuario") # Recordar que el id_usuario es almacenado cada vez que se inicia sesión
+
     if "id_usuario" not in session:
         return redirect(url_for("registrar_usuario"))
+
+    cursor = db.cursor()
+
+    if request.method == "POST":
+        avatar = request.form["avatar"]
+
+        sql_query = "UPDATE usuarios SET avatar = %s WHERE id = %s"
+        cursor.execute(sql_query, (avatar, id_usuario))
+        db.commit()
+
+        return redirect(url_for("perfil"))
     
     return render_template("seleccionarAvatar.html")
 # ------------------------------------------------------------------------------------------------------------------------------

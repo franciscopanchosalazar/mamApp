@@ -17,3 +17,6 @@ ADD latitud DECIMAL(10,8) NULL;
 
 ALTER TABLE usuarios
 ADD longitud DECIMAL(11,8) NULL;
+
+ALTER TABLE usuarios
+ADD avatar VARCHAR(100);
